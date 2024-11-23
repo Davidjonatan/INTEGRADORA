@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">INTEGRADORA</string>
+    <string name="uno">sensor</string>
+    <string name="two">PET Dispenser-food</string>
 </resources>

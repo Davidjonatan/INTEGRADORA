@@ -33,6 +33,7 @@ android {
 
 dependencies {
     implementation(libs.picasso)
+    implementation(libs.lottie)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.retrofit)
