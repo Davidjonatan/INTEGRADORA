@@ -1,10 +1,12 @@
 package com.example.integradora.views.response;
 
-import com.google.gson.annotations.SerializedName;
-
-public class LoginResponse {
+public class SignUpResponse {
     private String message;
-    private String token;
+
+
+    public SignUpResponse() {
+        this.message = "";
+    }
 
 
     public String getMessage() {
@@ -13,9 +15,5 @@ public class LoginResponse {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getToken() {
-        return token;
     }
 }

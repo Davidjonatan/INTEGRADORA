@@ -1,7 +1,9 @@
 package com.example.integradora.views.api;
 
 import com.example.integradora.views.models.LoginRequest;
+import com.example.integradora.views.models.SignUpRequest;
 import com.example.integradora.views.response.LoginResponse;
+import com.example.integradora.views.response.SignUpResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -12,4 +14,8 @@ public interface apiComedero {
     @Headers( "Content-Type: application/json")
     @POST("login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
+
+    @Headers( "Content-Type: application/json")
+    @POST("register")
+    Call<SignUpResponse> register(@Body SignUpRequest signUpRequest);
 }

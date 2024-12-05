@@ -55,21 +55,40 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edittext_rounded"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
             android:padding="12dp" />
 
+        <TextView android:id="@+id/tvEmailError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/error_background"
+            android:visibility="gone" />
+
+
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edittext_rounded"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tvPasswordError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/error_background"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
 
         <Button
             android:id="@+id/btnLogin"
@@ -80,18 +99,37 @@
             android:padding="12dp"
             android:text="Entrar"
             android:textColor="#FFFFFF" />
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tvGeneralError"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_gravity="center" />
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/error_background"
+            android:layout_marginBottom="16dp"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvGeneralSuccess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:background="@drawable/success_background"
+            android:layout_marginBottom="16dp"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
+
+
+
 
             <TextView
                 android:id="@+id/tvHaveAccount"
