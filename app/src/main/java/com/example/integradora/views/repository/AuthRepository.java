@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.integradora.views.api.apiComedero;
 import com.example.integradora.views.models.LoginRequest;
+import com.example.integradora.views.models.ReactivateRequest;
 import com.example.integradora.views.models.SignUpRequest;
 import com.example.integradora.views.network.RetrofitClient;
 import com.example.integradora.views.response.ErrorResponse;
@@ -23,10 +24,12 @@ import retrofit2.Response;
 public class AuthRepository {
     private final apiComedero authApi;
     private final MutableLiveData<ErrorResponse> errorResponseLiveData;
+    private final MutableLiveData<String> generalErrorLiveData;
 
     public AuthRepository() {
         authApi = RetrofitClient.getInstance().create(apiComedero.class);
         errorResponseLiveData = new MutableLiveData<>();
+        generalErrorLiveData = new MutableLiveData<>();
     }
 
     public MutableLiveData<SignUpResponse> register(SignUpRequest signUpRequest) {
@@ -62,6 +65,8 @@ public class AuthRepository {
     }
 
     public MutableLiveData<ErrorResponse> getErrorResponseLiveData() { return errorResponseLiveData; }
+
+
 
 
     public LiveData<LoginResponse> login(String email, String password) {
@@ -112,4 +117,42 @@ public class AuthRepository {
         });
         return loginResponseLiveData;
     }
+
+    public MutableLiveData<String> getGeneralErrorLiveData() { return generalErrorLiveData; }
+
+    public LiveData<Void> reactivate(String email) {
+        MutableLiveData<Void> reactivateResponseLiveData = new MutableLiveData<>();
+        ReactivateRequest reactivateRequest = new ReactivateRequest(email);
+        authApi.reactivate(reactivateRequest).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    reactivateResponseLiveData.postValue(null);
+                    errorResponseLiveData.setValue(null); // Limpiar errores anteriores
+                } else if (response.code() == 422) {
+                    try {
+                        Gson gson = new Gson();
+                        ErrorResponse errorResponse = gson.fromJson(response.errorBody().string(), ErrorResponse.class);
+                        errorResponseLiveData.setValue(errorResponse);
+                    } catch (IOException e) {
+                        errorResponseLiveData.setValue(null);
+                    }
+                } else if(response.code() == 404) {
+                    generalErrorLiveData.setValue("No hay ningún usuario con ese correo");
+                } else if (response.code() == 409) {
+                    generalErrorLiveData.setValue("Esta cuenta ya está activada");
+                } else {
+                    generalErrorLiveData.setValue("Error desconocido: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                reactivateResponseLiveData.setValue(null);
+                errorResponseLiveData.setValue(null);
+            }
+        });
+        return reactivateResponseLiveData;
+    }
+
 }

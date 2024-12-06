@@ -145,7 +145,7 @@ public class Login extends AppCompatActivity {
         });
 
         tvActivate.setOnClickListener(view -> {
-            Intent intent = new Intent(Login.this, verification_code.class);
+            Intent intent = new Intent(Login.this, SendEmail.class);
             startActivity(intent);
             finish();
         });

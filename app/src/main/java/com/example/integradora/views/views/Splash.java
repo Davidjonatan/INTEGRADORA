@@ -30,10 +30,10 @@ public class Splash extends AppCompatActivity {
 
                 Intent intent;
                 if (token == null) {
-                    // Si no hay token, redirigir al Login
+
                     intent = new Intent(Splash.this, Login.class);
                 } else {
-                    // Si hay token, redirigir a MainActivity
+
                     intent = new Intent(Splash.this, MainActivity.class);
                 }
                 startActivity(intent);

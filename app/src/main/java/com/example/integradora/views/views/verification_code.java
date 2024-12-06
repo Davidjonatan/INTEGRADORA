@@ -33,7 +33,7 @@ public class verification_code extends AppCompatActivity {
         });
 
         tvResend.setOnClickListener(view -> {
-            Intent intent = new Intent(verification_code.this,verification_code.class);
+            Intent intent = new Intent(verification_code.this,SendEmail.class);
             startActivity(intent);
             finish();
         });

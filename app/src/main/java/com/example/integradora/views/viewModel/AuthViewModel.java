@@ -17,6 +17,7 @@ public class AuthViewModel extends ViewModel {
     private final AuthRepository authRepository;
     private final MutableLiveData<LoginResponse> loginResponseLiveData = new MutableLiveData<>();
     private  MutableLiveData<SignUpResponse> signUpResponseLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Void> reactivateResponseLiveData = new MutableLiveData<>();
 
 
     public AuthViewModel() {
@@ -45,7 +46,20 @@ public class AuthViewModel extends ViewModel {
         return loginResponseLiveData;
     }
 
+    public LiveData<Void> reactivate(String email)
+    {
+        reactivateResponseLiveData.setValue(null);
+        return authRepository.reactivate(email);
+    }
+
+    public LiveData<String> getGeneralErrorLiveData() {
+        return authRepository.getGeneralErrorLiveData();
+    }
+
     public LiveData<LoginResponse> getLoginResponseLiveData() { return loginResponseLiveData; }
     public LiveData<ErrorResponse> getErrorResponseLiveData() { return authRepository.getErrorResponseLiveData(); }
-    public void clearErrors() { authRepository.getErrorResponseLiveData().setValue(null); }
+    public void clearErrors() {
+        authRepository.getErrorResponseLiveData().setValue(null);
+        authRepository.getGeneralErrorLiveData().setValue(null);
+    }
 }
