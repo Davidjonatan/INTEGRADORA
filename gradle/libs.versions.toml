@@ -14,6 +14,7 @@ picasso = "2.71828"
 lottie = "6.6.0"
 annotation = "1.9.1"
 loggingInterceptor = "5.0.0-alpha.14"
+materialVersion = "1.13.0-alpha08"
 
 [libraries]
 
@@ -33,6 +34,7 @@ picasso = {group = "com.squareup.picasso", name = "picasso", version.ref = "pica
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -7,10 +7,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.util.Log;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +25,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.integradora.R;
 import com.example.integradora.views.api.apiComedero;
+import com.example.integradora.views.models.UpdateRequest;
 import com.example.integradora.views.response.UserResponse;
+import com.example.integradora.views.response.UserUpdateResponse;
+import com.example.integradora.views.viewModel.UserUpdateViewModel;
 import com.example.integradora.views.viewModel.UserViewModel;
 
 import retrofit2.Call;
@@ -30,12 +36,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import com.example.integradora.views.network.RetrofitClient;
 
+import java.util.List;
+import java.util.Map;
+
 
 public class Account extends AppCompatActivity {
     private LinearLayout llFeeders;
     private UserViewModel userViewModel;
     private Button btnLogout;
     private Button btnUpdate;
+    private UserUpdateViewModel userUpdateViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +54,11 @@ public class Account extends AppCompatActivity {
 
         llFeeders = findViewById(R.id.llFeeders);
 
-        if (llFeeders != null) { llFeeders.setOnClickListener(view -> {
-            Intent intent = new Intent(Account.this, MainActivity.class);
-            startActivity(intent);
-        });
+        if (llFeeders != null) {
+            llFeeders.setOnClickListener(view -> {
+                Intent intent = new Intent(Account.this, MainActivity.class);
+                startActivity(intent);
+            });
         } else {
             Log.e("MainActivity", "llProfile is null");
         }
@@ -63,7 +74,7 @@ public class Account extends AppCompatActivity {
             @Override
             public void onChanged(UserResponse user) {
                 if (user != null && user.getName() != null && user.getEmail() != null) {
-                    etName.setText("Nombre de usuario: "+user.getName());
+                    etName.setText("Nombre de usuario: " + user.getName());
                     nameTextView.setText("¡Hola, " + user.getName() + "!");
                     emailTextView.setText("Email: " + user.getEmail());
                 }
@@ -83,41 +94,16 @@ public class Account extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showUpdateDialog();
+
+                Intent intent = new Intent(Account.this, updateData.class);
+                startActivity(intent);
 
             }
         });
 
     }
-    private void showUpdateDialog() {
-        // Crear el dialogo
-        final Dialog dialog = new Dialog(Account.this);
-        dialog.setContentView(R.layout.dialog_user_update);
 
-        // Obtener vistas del dialogo
-        EditText updateNameEditText = dialog.findViewById(R.id.etUpdateName);
-        EditText updateEmailEditText = dialog.findViewById(R.id.etOldPassword);
-        Button btnSave = dialog.findViewById(R.id.btnSave);
-        Button btnClose = dialog.findViewById(R.id.btnClose);
 
-        userViewModel.getUserLiveData().observe(this, new Observer<UserResponse>() {
-            @Override
-            public void onChanged(UserResponse user) {
-                if (user != null && user.getName() != null && user.getEmail() != null) {
-                    updateNameEditText.setHint(user.getName());
-                }
-            }
-        });
-
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-    }
 
     private void logoutUser() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
@@ -149,5 +135,12 @@ public class Account extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String getError(Map<String, List<String>> errors, String field) {
+        if (errors.containsKey(field) && errors.get(field) != null && !errors.get(field).isEmpty()) {
+            return errors.get(field).get(0); // Mostrar el primer error
+        }
+        return null; // No hay error para este campo
     }
 }

@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.annotation)
     implementation(libs.logging.interceptor)
+    implementation(libs.google.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
