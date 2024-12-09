@@ -12,7 +12,7 @@
 
     <!-- TextView principal (Comedero) -->
     <TextView
-        android:id="@+id/tvComedero"
+        android:id="@+id/tvId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Comedero"
@@ -23,9 +23,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvEstado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Estado"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvId"/>
+
     <!-- TextView secundario (Mascota) -->
     <TextView
-        android:id="@+id/tvMascota"
+        android:id="@+id/tvMascotaNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Mascota"
@@ -33,12 +45,12 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvComedero"
+        app:layout_constraintTop_toBottomOf="@id/tvEstado"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <!-- Botón del lado derecho (Ver) -->
     <Button
-        android:id="@+id/btnVer"
+        android:id="@+id/btnVerDetalles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#56c6bd"
