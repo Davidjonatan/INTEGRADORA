@@ -20,11 +20,24 @@ import java.util.List;
 public class ComederoAdapter extends RecyclerView.Adapter<ComederoAdapter.ComederoViewHolder>{
     private List<Comedero> comederoList;
     private Context context;
+    private OnComederoEliminarListener eliminarListener;
 
     public void setComederoList(List<Comedero> comederoList, Context context) {
         this.comederoList = comederoList;
         this.context = context;
         notifyDataSetChanged();
+    }
+
+    public interface OnComederoEliminarListener {
+        void onComederoEliminar(int id);
+    }
+    public List<Comedero> getComederoList() {
+        return comederoList;
+    }
+
+    public ComederoAdapter(List<Comedero> comederoList, OnComederoEliminarListener eliminarListener) {
+        this.comederoList = comederoList;
+        this.eliminarListener = eliminarListener;
     }
 
     @NonNull
@@ -47,6 +60,12 @@ public class ComederoAdapter extends RecyclerView.Adapter<ComederoAdapter.Comede
             context.startActivity(intent);
         });
 
+        holder.btnBorrar.setOnClickListener(v -> {
+            if (eliminarListener != null) {
+                eliminarListener.onComederoEliminar(comedero.getId());
+            }
+        });
+
 
     }
 
@@ -57,13 +76,14 @@ public class ComederoAdapter extends RecyclerView.Adapter<ComederoAdapter.Comede
 
     public class ComederoViewHolder extends RecyclerView.ViewHolder {
         TextView tvId, tvMascotaNombre, tvEstado;
-        Button btnVerDetalles;
+        Button btnVerDetalles, btnBorrar;
         public ComederoViewHolder(@NonNull View itemView) {
             super(itemView);
             tvId = itemView.findViewById(R.id.tvId);
             tvMascotaNombre = itemView.findViewById(R.id.tvMascotaNombre);
             tvEstado = itemView.findViewById(R.id.tvEstado);
             btnVerDetalles = itemView.findViewById(R.id.btnVerDetalles);
+            btnBorrar = itemView.findViewById(R.id.btnBorrar);
         }
     }
 }

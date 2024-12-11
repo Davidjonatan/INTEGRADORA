@@ -15,7 +15,7 @@
         android:id="@+id/tvId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Comedero"
+        android:text="Mascota ID"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -24,20 +24,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvEstado"
+        android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Estado"
+        android:text="Nombre de mascota"
         android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvId"/>
 
     <!-- TextView secundario (Mascota) -->
     <TextView
-        android:id="@+id/tvMascotaNombre"
+        android:id="@+id/tvAnimal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Mascota"
@@ -45,36 +44,25 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEstado"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <!-- Botón del lado derecho (Ver) -->
-    <Button
-        android:id="@+id/btnVerDetalles"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:backgroundTint="#56c6bd"
-        android:text="Ver"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/btnBorrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnBorrar"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:id="@+id/btnEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="#f44336"
         android:text="Eliminar"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/btnVerDetalles"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

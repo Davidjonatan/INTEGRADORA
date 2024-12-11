@@ -128,7 +128,7 @@ public class AuthRepository {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     reactivateResponseLiveData.postValue(null);
-                    errorResponseLiveData.setValue(null); // Limpiar errores anteriores
+                    errorResponseLiveData.setValue(null);
                 } else if (response.code() == 422) {
                     try {
                         Gson gson = new Gson();

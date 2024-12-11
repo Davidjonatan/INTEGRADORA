@@ -20,24 +20,31 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar" />
-
     <TextView
-        android:id="@+id/tvNumeroSerie"
+        android:id="@+id/ultimaActualizacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tittle"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="2dp"
+        android:text="Ultima actualización: "
+        android:textColor="#000000"
+        android:textSize="22sp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="3dp"
-        android:textSize="20dp"
+        android:layout_marginBottom="12dp"
 
-        android:text="Número de Serie:" />
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tittle" />
+
+
+
+
+
 
     <TextView
         android:id="@+id/tvEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvNumeroSerie"
+        app:layout_constraintTop_toBottomOf="@id/ultimaActualizacion"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="10dp"
         android:layout_marginTop="3dp"
@@ -109,23 +116,65 @@
         android:id="@+id/tvHumedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvCantidadAguaServida"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="Humedad:"
         android:textSize="20dp"
-
-        android:layout_marginTop="3dp"
-        android:text="Cantidad de Comida:" />
+        android:layout_marginBottom="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCantidadAguaServida" />
 
     <TextView
-        android:id="@+id/tvGases"
+        android:id="@+id/tvSeco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvHumedad"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="20dp"
+        android:visibility="gone"
+
+        android:background="@drawable/error_background"
         android:layout_marginStart="10dp"
         android:layout_marginTop="3dp"
+        android:text="Ambiente seco." />
+
+    <TextView
+        android:id="@+id/tvOptimo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvHumedad"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+        android:visibility="gone"
+        android:background="@drawable/success_background"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:text="Ambiente óptimo." />
+
+    <TextView
+        android:id="@+id/tvHumedo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvHumedad"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+        android:visibility="gone"
+        android:background="@drawable/medium_background"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:text="Ambiente muy húmedo." />
+
+
+
+    <TextView
+        android:id="@+id/tvGases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvHumedo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
         android:text="Gases:" />
 
     <TextView
@@ -135,37 +184,88 @@
         app:layout_constraintTop_toBottomOf="@id/tvGases"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="20dp"
-
         android:layout_marginStart="10dp"
         android:layout_marginTop="3dp"
         android:text="Temperatura de Agua:" />
 
     <TextView
-        android:id="@+id/tvServirAgua"
+        android:id="@+id/tvFrio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvTemperaturaAgua"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@id/tvServirComida"
+        android:layout_marginBottom="12dp"
+
+        android:visibility="gone"
+
+        android:background="@drawable/ambiente_background"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="7dp"
-        android:textStyle="bold"
-        android:text="SERVIR AGUA" />
+        android:layout_marginTop="3dp"
+        android:text="Agua Fria (0°C - 19°C)" />
 
     <TextView
-        android:id="@+id/tvServirComida"
+        android:id="@+id/tvAmbiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvTemperaturaAgua"
-        app:layout_constraintStart_toEndOf="@id/tvServirAgua"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:textSize="20dp"
-        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+        android:visibility="gone"
+        android:background="@drawable/success_background"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="7dp"
-        android:text="SERVIR COMIDA" />
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="12dp"
+
+        android:text="Agua en temperatura ambiente (20°C - 30°C)" />
+
+    <TextView
+        android:id="@+id/tvCaliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTemperaturaAgua"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+        android:visibility="gone"
+        android:background="@drawable/error_background"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="12dp"
+
+        android:text="Agua caliente (30°C - 38°C)" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#56c6bd"
+        android:padding="2dp"
+        android:layout_marginBottom="16dp"
+        android:text="Actualizar Datos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnServir"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        android:layout_marginTop="40dp"
+        android:textColor="#000000" />
+
+
+
+    <Button
+        android:id="@+id/btnServir"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#56c6bd"
+        android:padding="2dp"
+        android:text="Servir Comida"
+        app:layout_constraintStart_toEndOf="@id/btnUpdate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000" />
+
+
+
 
 
 
@@ -178,8 +278,17 @@
         android:padding="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="end"
         app:layout_constraintEnd_toEndOf="parent">
-
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#f44336"
+            android:text="Regresar"
+            android:textColor="#F5F5F5"
+            android:layout_marginTop="5dp"
+            />
     </LinearLayout>
     <!-- Barra inferior -->
     <LinearLayout
@@ -194,6 +303,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/llFeeders"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

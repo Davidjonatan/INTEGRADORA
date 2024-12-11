@@ -17,6 +17,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".views.views.ServirComida"
+            android:exported="false" />
+        <activity
+            android:name=".views.views.ElegirMascota"
+            android:exported="false" />
+        <activity
+            android:name=".views.views.CrearMascota"
+            android:exported="false" />
+        <activity
+            android:name=".views.views.CrearComedero"
+            android:exported="false" />
+        <activity
+            android:name=".views.views.Mascotas"
+            android:exported="false" />
+        <activity
             android:name=".views.views.DetalleComedero"
             android:exported="false" />
         <activity

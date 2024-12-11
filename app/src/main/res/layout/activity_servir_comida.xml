@@ -1,80 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
-    tools:context=".views.views.MainActivity">
+    tools:context=".views.views.ServirComida">
 
-    <!-- Contenido principal -->
+
 
     <TextView
-        android:id="@+id/tittle"
+        android:id="@+id/ServirComida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Mis Comederos"
+        android:layout_marginTop="20dp"
+        android:text="Servir comida"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"
-
-        app:layout_constraintEnd_toStartOf="@id/animacion"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toTopOf="@id/enviarDatos"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topBar" />
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        />
 
     <TextView
-        android:id="@+id/empty"
-        android:layout_width="match_parent"
+        android:id="@+id/enviarDatos"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/topBar"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        android:text="Actualmente no tienes comederos creados."
+        android:layout_marginTop="10dp"
+        android:text="Selecciona la cantidad que quieres servir de croquetas."
         android:textColor="#000000"
         android:textSize="15sp"
-        android:visibility="gone"
-        android:textAlignment="center"
-        />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@id/tittle"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toTopOf="@id/btnMediana"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/ServirComida" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animacion"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tittle"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/perro"
-       />
 
-    <!-- Barra superior -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add"
+
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/btnPequeña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="26dp"
-        android:layout_marginEnd="24dp"
-        android:scrollbars="vertical"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#56c6bd"
-        android:contentDescription="Agregar"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        android:padding="2dp"
+        android:text="Pequeña"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnMediana"
+        app:layout_constraintTop_toBottomOf="@id/enviarDatos"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/btnMediana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#56c6bd"
+        android:padding="2dp"
+        android:text="Mediana"
+        app:layout_constraintStart_toEndOf="@id/btnPequeña"
+        app:layout_constraintEnd_toStartOf="@id/btnGrande"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
+        app:layout_constraintTop_toBottomOf="@id/enviarDatos"
+        android:layout_marginTop="30dp"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/btnGrande"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#56c6bd"
+        android:padding="2dp"
+        android:text="Grande"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
+        app:layout_constraintStart_toEndOf="@id/btnMediana"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_plus"/>
+        app:layout_constraintTop_toBottomOf="@id/enviarDatos"
+        android:layout_marginTop="30dp"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="46dp"
+        android:backgroundTint="#f44336"
+        android:padding="2dp"
+        android:text="Regresar"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+
+        android:layout_marginTop="30dp"
+        android:textColor="#F5F5F5" />
+
+
+
 
     <LinearLayout
         android:id="@+id/topBar"
@@ -101,6 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/llFeeders"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -113,7 +150,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/comedero"
-            android:contentDescription="Comederos" />
+                android:contentDescription="Comederos" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -137,7 +174,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/perfil"
-            android:contentDescription="Mi cuenta" />
+                android:contentDescription="Mi cuenta" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -148,5 +185,6 @@
                 android:layout_marginTop="4dp" />
         </LinearLayout>
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

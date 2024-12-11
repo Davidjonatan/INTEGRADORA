@@ -44,7 +44,7 @@ public class Account extends AppCompatActivity {
     private LinearLayout llFeeders;
     private UserViewModel userViewModel;
     private Button btnLogout;
-    private Button btnUpdate;
+    private Button btnUpdate, btnMascotas;
     private UserUpdateViewModel userUpdateViewModel;
 
     @Override
@@ -89,6 +89,7 @@ public class Account extends AppCompatActivity {
             }
         });
 
+
         btnUpdate = findViewById(R.id.btnUpdate);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +97,17 @@ public class Account extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Account.this, updateData.class);
+                startActivity(intent);
+
+            }
+        });
+        btnMascotas = findViewById(R.id.btnMascotas);
+
+        btnMascotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Account.this, Mascotas.class);
                 startActivity(intent);
 
             }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
-    tools:context=".views.views.MainActivity">
+    tools:context=".views.views.CrearComedero">
 
     <!-- Contenido principal -->
 
@@ -13,14 +13,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Mis Comederos"
+        android:text="Mascota elegida "
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-
-        app:layout_constraintEnd_toStartOf="@id/animacion"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar" />
+
+    <TextView
+        android:id="@+id/tvMascotaId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Id de mascota elegida"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tittle" />
+
+    <TextView
+        android:id="@+id/tvMascotaNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Nombre de mascota elegida"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMascotaId" />
 
     <TextView
         android:id="@+id/empty"
@@ -36,45 +59,61 @@
         android:visibility="gone"
         android:textAlignment="center"
         />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@id/tittle"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
-        />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animacion"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tittle"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/perro"
-       />
 
-    <!-- Barra superior -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add"
+    <TextView
+        android:id="@+id/tvIdError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="26dp"
-        android:layout_marginEnd="24dp"
-        android:scrollbars="vertical"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="#56c6bd"
-        android:contentDescription="Agregar"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_plus"/>
+        app:layout_constraintTop_toBottomOf="@id/tvMascotaNombre"
+        android:background="@drawable/error_background"
+        android:textColor="#f44336"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        android:visibility="gone" />
+
+
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#56c6bd"
+        android:padding="2dp"
+        android:text="Guardar"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
+        app:layout_constraintTop_toBottomOf="@id/tvMascotaNombre"
+
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="#f44336"
+        android:padding="2dp"
+        android:text="Regresar"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+
+
+        android:textColor="#FFFFFF" />
+
+
+
+
+
+    <!-- Barra superior -->
+
 
     <LinearLayout
         android:id="@+id/topBar"
@@ -101,6 +140,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/llFeeders"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -113,7 +153,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/comedero"
-            android:contentDescription="Comederos" />
+                android:contentDescription="Comederos" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -137,7 +177,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/perfil"
-            android:contentDescription="Mi cuenta" />
+                android:contentDescription="Mi cuenta" />
 
             <TextView
                 android:layout_width="wrap_content"
